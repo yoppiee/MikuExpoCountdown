@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Countdown Timer</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(135deg, #001ea3, #010029);;
+      color: #fff;
+      font-family: Arial, sans-serif;
+      text-align: center;
+      flex-direction: column;
+    }
+.top-link {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 18px;
+}
+.top-image {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+}
+
+.top-image img {
+  width: 80px;
+  cursor: pointer;
+}
+.top-link:hover {
+  text-decoration: underline;
+}
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+    }
+
+    #countdown {
+      font-size: 7rem;
+      font-weight: bold;
+    }
+.bottom-image {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.bottom-image img {
+  width: 100px;
+  cursor: pointer;
+}
+.bottom-image img {
+  width: 60px;
+  filter: brightness(0) invert(1);
+}
+.bottom-image img:hover {
+  transform: scale(1.1);
+  transition: 0.3s;
+}
+.bottom-logo {
+  position: fixed;
+  bottom: 20px;           /* distance from bottom */
+  left: 50%;              /* center horizontally */
+  transform: translateX(-50%);
+  text-align: center;     /* center text above logo */
+}
+
+.bottom-logo .logo-text {
+  color: white;           /* text color */
+  font-size: 18px;        /* adjust text size */
+  margin-bottom: 5px;     /* space between text and logo */
+  font-weight: bold;
+}
+
+.bottom-logo img {
+  width: 80px;            /* logo size */
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+
+
+  </style>
+</head>
+<body>
+
+</a>
+  <a href="https://mikuexpo.com" class="top-link" target="_blank">Official Miku Expo Website</a>
+  <h1> 🥬COUNTDOWN TO MIKU LONDON EXPO!!! 🥬 </h1>
+  <div id="countdown">Loading...</div>
+
+  <script>
+    // Set your target date here
+    const targetDate = new Date("November 12, 2026 20:00:00").getTime();
+
+    const updateTimer = () => {
+      const now = new Date().getTime();
+      const distance = targetDate - now;
+
+      if (distance < 0) {
+        document.getElementById("countdown").innerText = "🎉 Time's up!";
+        clearInterval(interval);
+        return;
+      }
+
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      document.getElementById("countdown").innerText =
+        `${days}d ${hours}h ${minutes}m ${seconds}s`;
+    };
+
+    // Update every second
+    const interval = setInterval(updateTimer, 1000);
+    updateTimer(); // Run immediately
+  </script>
+
+</body>
+</html>
